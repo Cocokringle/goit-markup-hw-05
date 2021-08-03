@@ -15,6 +15,7 @@
   --primary-white-color: #ffffff;
   --secondary-fon-color: #f5f4fa;
   --primary-fon-color: #ffffff;
+  --time: cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 /* Тело */
@@ -101,11 +102,14 @@ img {
 .nav-list .nav-item + .nav-item {
   margin-left: 50px;
 }
+
 .site-nav .link {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
 
+  position: relative;
+  transition: color 250ms var(--time);
   color: var(--primary-text-color);
 
   text-decoration: none;
@@ -118,9 +122,31 @@ img {
 .site-nav .link:focus {
   color: var(--accent-color);
 }
+
+.link::after{
+  content: '';
+
+  display: block;
+  width: 100%;
+  height: 4px;
+
+  position: absolute;
+  bottom: 0;
+  
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  
+  /* opacity: 0; */
+  transform: scaleX(0);
+  transition: transform 250ms var(--time);
+}
+.link:hover::after{
+  /* opacity: 1; */
+  transform: scaleX(1);
+}
+
 .link-nav {
   color: var(--secondary-text-color);
-  /* fill: var(--secondary-text-color); */
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
@@ -128,12 +154,24 @@ img {
   letter-spacing: 0.02em;
   display: flex;
   align-items: center;
+  transition: color 250ms var(--time), fill 250ms var(--time);
 }
 .link-nav-icon{
   margin-right: 10px;
   fill: currentColor;
+  transition: color 250ms var(--time), fill 250ms var(--time);
+}
+.link-nav:focus,
+.link-nav:hover {
+  color: var(--accent-color);
+  fill: var(--accent-color);
 }
 
+.link-nav:focus .link-nav-icon,
+.link-nav:hover .link-nav-icon {
+  color: var(--accent-color);
+  fill: var(--accent-color);
+}
 .link.current {
   color: var(--accent-color);
 }
@@ -144,16 +182,7 @@ img {
 .contacts .contacts-item + .contacts-item {
   margin-left: 50px;
 }
-.link-nav:focus,
-.link-nav:hover  {
-  color: var(--accent-color);
-  fill: var(--accent-color);
-}
-.link-nav:focus .link-nav-icon,
-.link-nav:hover .link-nav-icon{
-  color: var(--accent-color);
-  fill: var(--accent-color);
-}
+
 
 /* Герой */
 .hero {
@@ -226,10 +255,26 @@ img {
 /* Чем мы занимаемся */
 .work-list {
   display: flex;
+  
 }
 .work-list .work-item + .work-item {
   margin-left: 30px;
 }
+.work-box{
+  position: relative;
+}
+
+.work-box::before{
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 25%;
+  bottom: 0;
+  background-color: rgba(47, 48, 58, 0.8);
+  position: absolute;
+}
+
+
 /* Наша команда */
 .team {
   display: flex;
@@ -255,6 +300,7 @@ img {
   background-color: var(--primary-white-color);
   color: #AFB1B8;
   border-radius: 50%;
+  transition: background-color 250ms var(--time),color 250ms var(--time);
 }
 .social-link:hover,
 .social-link:focus {
@@ -262,11 +308,12 @@ img {
   color: var(--primary-white-color);
 }
 .social-icon-box {
-  width: 44px;
-  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 44px;
+  height: 44px;
+  
   
 }
 .social-link-list .social-link-item + .social-link-item {
@@ -293,6 +340,7 @@ img {
   color: #AFB1B8;
   border: 1px solid #AFB1B8;
   border-radius: 4px;
+  transition: border-color 250ms var(--time),color 250ms var(--time);
 
 }
 .clients-link:hover,
@@ -324,6 +372,13 @@ img {
 .white {
   color: var(--primary-white-color);
   margin-bottom: 20px;
+}
+.lighten {
+  color: var(--primary-white-color);
+  margin: 0;
+  position: absolute;
+  bottom: 25px;
+  right: 90px;
 }
 .text {
   color: var(--secondary-text-color);
@@ -360,6 +415,7 @@ img {
   margin-top: 0px;
   margin-bottom: 16px;
 }
+
 /* Футер */
 .footer {
   background-color: #2f303a;
@@ -380,6 +436,8 @@ img {
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
+  transition: color 250ms var(--time);
+  
 }
 .footer-links .address-link:focus,
 .footer-links .address-link:hover {
@@ -397,8 +455,6 @@ img {
 }
 /* Присоеденяйтесь */
 .join{
-  /* display: flex;
-  justify-content: center; */
   min-width: 206px;
   min-height: 80px;
   margin-left: 70px;
@@ -415,6 +471,7 @@ img {
   background-color: rgba(100%, 100%, 100%, 10%);
   color: #fff;
   border-radius: 50%;
+  transition: background-color 250ms var(--time),color 250ms var(--time);
 }
 
 .social-link-join:hover,
@@ -424,11 +481,11 @@ img {
 }
 
 .social-icon-box-join {
-  width: 44px;
-  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 44px;
+  height: 44px;
 
 }
 
@@ -464,6 +521,8 @@ img {
   padding: 6px 22px;
   min-width: 73px;
   text-align: center;
+  transition: background-color 250ms var(--time),color 250ms var(--time), box-shadow 250ms var(--time);
+  
 }
 .filter-element:hover{
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
@@ -503,9 +562,26 @@ img {
   padding: 20px 24px;
   border: 1px solid #eeeeee;
 }
+.text-work-examples {
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--primary-white-color);
+  position: absolute;
+  max-width: 322px;
+  max-height: 168px;
+  top: 60px;
+  left: 25px;
+  transform: translateY(100%);
+  transition: opacity 250ms var(--time);
+  
+}
 /* Сброс стилей ссылок на странице Портфолио */
 .filter-link {
   text-decoration: none;
+  position: relative;
 }
 /* Сетка работ на странице Портфолио */
 .filter-elements {
@@ -516,6 +592,7 @@ img {
   width: calc((100% - 60px) / 3);
   margin-right: 30px;
   margin-bottom: 30px;
+  transition: box-shadow 250ms var(--time)
   
 }
 .filter-element:nth-child(3n) {
@@ -524,3 +601,37 @@ img {
 .filter-element:nth-last-child(-n + 3) {
   margin-bottom: 0px;
 }
+.work-examples{
+  position: relative;
+  overflow: hidden;
+}
+.work-examples::before{
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  position: absolute;
+  transform: translateY(100%);
+  transition: transform 250ms var(--time);
+}
+.filter-link:hover ::before{
+  transform: translateY(0);
+}
+.filter-link:hover .text-work-examples {
+  transform: translateY(0);
+}
+/* .overlay-examples{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  position: absolute;
+  transform: translateY(100%);
+  transition: transform 250ms var(--time);
+}
+.filter-link:hover .overlay-examples{
+  transform: translateY(0);
+} */
