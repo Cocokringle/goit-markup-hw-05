@@ -136,12 +136,11 @@ img {
   background-color: var(--accent-color);
   border-radius: 2px;
   
-  /* opacity: 0; */
+
   transform: scaleX(0);
   transition: transform 250ms var(--time);
 }
 .link:hover::after{
-  /* opacity: 1; */
   transform: scaleX(1);
 }
 
@@ -231,6 +230,67 @@ img {
   line-height: 1.8;
   text-align: center;
 }
+/* Модальное окно */
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);;
+
+  opacity: 1;
+  transition: opacity 250ms var(--time);
+}
+.backdrop.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal{
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--time);
+  
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--primary-fon-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+  0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+ 
+}
+.close-modal{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+  margin-right: 7px;
+
+  background: var(--primary-fon-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+.close-icon-box{
+  width: 18px;
+  height: 18px;
+}
+.close-icon{
+  fill: #000;
+}
 /* Наши преимущества */
 .advantages {
   display: flex;
@@ -248,9 +308,6 @@ img {
   background-color: var(--secondary-fon-color);
   margin-bottom: 30px;
 }
-.advantage-icon{ 
-  
-}
 
 /* Чем мы занимаемся */
 .work-list {
@@ -262,6 +319,7 @@ img {
 }
 .work-box{
   position: relative;
+
 }
 
 .work-box::before{
@@ -272,6 +330,7 @@ img {
   bottom: 0;
   background-color: rgba(47, 48, 58, 0.8);
   position: absolute;
+  
 }
 
 
@@ -577,7 +636,7 @@ img {
   transform: translateY(100%);
   opacity: 0;
   transition: transform 250ms var(--time), opacity  250ms var(--time);
-  
+ 
 }
 /* Сброс стилей ссылок на странице Портфолио */
 .filter-link {
