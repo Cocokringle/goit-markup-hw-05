@@ -701,8 +701,8 @@ p {
 }
 
 .modal-close-icon {
-  color: var(--color-dark);
-  transition: color 250ms var(--timing-function-main);
+  fill: var(--color-dark);
+  transition: fill 250ms var(--timing-function-main);
 }
 
 .modal-close-button:hover,
@@ -713,7 +713,7 @@ p {
 
 .modal-close-button:hover .modal-close-icon,
 .modal-close-button:focus .modal-close-icon {
-  color: var(--color-white);
+  fill: var(--color-white);
 }
 
 .modal-title {
@@ -773,14 +773,14 @@ p {
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-dark);
-  transition: color 250ms var(--timing-function-main);
+  fill: var(--color-dark);
+  transition: fill 250ms var(--timing-function-main);
   pointer-events: none;
 }
 
 .modal-input:hover + .modal-input-icon,
 .modal-input:focus + .modal-input-icon {
-  color: var(--color-brand-primary);
+  fill: var(--color-brand-primary);
 }
 
 .modal-textarea {
